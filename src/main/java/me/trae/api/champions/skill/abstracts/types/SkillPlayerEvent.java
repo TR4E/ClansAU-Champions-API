@@ -9,7 +9,7 @@ public class SkillPlayerEvent extends SkillEvent implements IPlayerEvent {
 
     private final Player player;
 
-    public SkillPlayerEvent(final Skill<?> skill, final Player player) {
+    public SkillPlayerEvent(final Skill<?, ?> skill, final Player player) {
         super(skill);
 
         this.player = player;

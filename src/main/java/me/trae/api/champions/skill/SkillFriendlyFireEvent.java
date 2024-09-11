@@ -11,7 +11,7 @@ public class SkillFriendlyFireEvent extends SkillPlayerCancellableEvent implemen
 
     private boolean vulnerable;
 
-    public SkillFriendlyFireEvent(final Skill<?> skill, final Player player, final Player target) {
+    public SkillFriendlyFireEvent(final Skill<?, ?> skill, final Player player, final Player target) {
         super(skill, player);
 
         this.target = target;

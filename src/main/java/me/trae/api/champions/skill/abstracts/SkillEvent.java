@@ -6,14 +6,14 @@ import me.trae.core.event.CustomEvent;
 
 public class SkillEvent extends CustomEvent implements ISkillEvent {
 
-    private final Skill<?> skill;
+    private final Skill<?, ?> skill;
 
-    public SkillEvent(final Skill<?> skill) {
+    public SkillEvent(final Skill<?, ?> skill) {
         this.skill = skill;
     }
 
     @Override
-    public Skill<?> getSkill() {
+    public Skill<?, ?> getSkill() {
         return this.skill;
     }
 }

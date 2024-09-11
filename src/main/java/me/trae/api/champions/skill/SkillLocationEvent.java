@@ -10,13 +10,13 @@ public class SkillLocationEvent extends SkillPlayerCancellableEvent implements I
 
     private final Location location;
 
-    public SkillLocationEvent(final Skill<?> skill, final Player player, final Location location) {
+    public SkillLocationEvent(final Skill<?, ?> skill, final Player player, final Location location) {
         super(skill, player);
 
         this.location = location;
     }
 
-    public SkillLocationEvent(final Skill<?> skill, final Location location) {
+    public SkillLocationEvent(final Skill<?, ?> skill, final Location location) {
         this(skill, null, location);
     }
 

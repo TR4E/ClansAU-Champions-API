@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 
 public class SkillUsingEvent extends SkillPlayerCancellableEvent {
 
-    public SkillUsingEvent(final Skill<?> skill, final Player player) {
+    public SkillUsingEvent(final Skill<?, ?> skill, final Player player) {
         super(skill, player);
     }
 }

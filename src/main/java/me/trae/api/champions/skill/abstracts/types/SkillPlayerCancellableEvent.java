@@ -9,7 +9,7 @@ public class SkillPlayerCancellableEvent extends SkillCancellableEvent implement
 
     private final Player player;
 
-    public SkillPlayerCancellableEvent(final Skill<?> skill, final Player player) {
+    public SkillPlayerCancellableEvent(final Skill<?, ?> skill, final Player player) {
         super(skill);
 
         this.player = player;

@@ -5,9 +5,9 @@ import me.trae.core.utility.UtilJava;
 
 public interface ISkillEvent {
 
-    Skill<?> getSkill();
+    Skill<?, ?> getSkill();
 
-    default <E extends Skill<?>> E getSkillByClass(final Class<E> clazz) {
+    default <E extends Skill<?, ?>> E getSkillByClass(final Class<E> clazz) {
         return UtilJava.cast(clazz, this.getSkill());
     }
 }
