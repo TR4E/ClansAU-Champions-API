@@ -21,8 +21,8 @@ public class SkillFriendlyFireEvent extends SkillPlayerCancellableEvent implemen
         this.target = target;
         this.vulnerable = true;
 
-        this.playerName = UtilServer.getEvent(new PlayerDisplayNameEvent(target, player)).getPlayerName();
-        this.targetName = UtilServer.getEvent(new PlayerDisplayNameEvent(player, target)).getPlayerName();
+        this.playerName = UtilServer.getEvent(new PlayerDisplayNameEvent(player, target)).getPlayerName();
+        this.targetName = UtilServer.getEvent(new PlayerDisplayNameEvent(target, player)).getPlayerName();
     }
 
     @Override
