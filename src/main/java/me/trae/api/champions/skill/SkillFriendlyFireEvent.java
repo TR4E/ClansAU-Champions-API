@@ -3,6 +3,8 @@ package me.trae.api.champions.skill;
 import me.trae.api.champions.skill.abstracts.types.SkillPlayerCancellableEvent;
 import me.trae.api.champions.skill.interfaces.ISkillFriendlyFireEvent;
 import me.trae.champions.skill.Skill;
+import me.trae.core.player.events.PlayerDisplayNameEvent;
+import me.trae.core.utility.UtilServer;
 import org.bukkit.entity.Player;
 
 public class SkillFriendlyFireEvent extends SkillPlayerCancellableEvent implements ISkillFriendlyFireEvent {
@@ -10,12 +12,17 @@ public class SkillFriendlyFireEvent extends SkillPlayerCancellableEvent implemen
     private final Player target;
 
     private boolean vulnerable;
+    private final String playerName;
+    private final String targetName;
 
     public SkillFriendlyFireEvent(final Skill<?, ?> skill, final Player player, final Player target) {
         super(skill, player);
 
         this.target = target;
         this.vulnerable = true;
+
+        this.playerName = UtilServer.getEvent(new PlayerDisplayNameEvent(target, player)).getPlayerName();
+        this.targetName = UtilServer.getEvent(new PlayerDisplayNameEvent(player, target)).getPlayerName();
     }
 
     @Override
@@ -31,5 +38,15 @@ public class SkillFriendlyFireEvent extends SkillPlayerCancellableEvent implemen
     @Override
     public void setVulnerable(final boolean vulnerable) {
         this.vulnerable = vulnerable;
+    }
+
+    @Override
+    public String getPlayerName() {
+        return this.playerName;
+    }
+
+    @Override
+    public String getTargetName() {
+        return this.targetName;
     }
 }

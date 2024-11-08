@@ -8,4 +8,8 @@ public interface ISkillFriendlyFireEvent extends ITargetEvent<Player> {
     boolean isVulnerable();
 
     void setVulnerable(final boolean vulnerable);
+
+    String getPlayerName();
+
+    String getTargetName();
 }
