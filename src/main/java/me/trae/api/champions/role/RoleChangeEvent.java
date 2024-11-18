@@ -1,11 +1,12 @@
 package me.trae.api.champions.role;
 
-import me.trae.api.champions.role.interfaces.IRoleChangeEvent;
+import me.trae.api.champions.role.interfaces.IRoleEvent;
 import me.trae.champions.role.Role;
 import me.trae.core.event.CustomEvent;
+import me.trae.core.event.types.IPlayerEvent;
 import org.bukkit.entity.Player;
 
-public class RoleChangeEvent extends CustomEvent implements IRoleChangeEvent {
+public class RoleChangeEvent extends CustomEvent implements IRoleEvent, IPlayerEvent {
 
     private final Role role;
     private final Player player;
