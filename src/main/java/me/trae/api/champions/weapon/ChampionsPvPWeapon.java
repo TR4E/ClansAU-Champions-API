@@ -4,8 +4,8 @@ import me.trae.api.champions.weapon.interfaces.IChampionsPvPWeapon;
 import me.trae.api.damage.events.CustomDamageEvent;
 import me.trae.champions.Champions;
 import me.trae.champions.weapon.WeaponManager;
+import me.trae.core.weapon.Weapon;
 import me.trae.core.weapon.data.WeaponData;
-import me.trae.core.weapon.types.CustomItem;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,7 +13,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
-public abstract class ChampionsPvPWeapon extends CustomItem<Champions, WeaponManager, WeaponData> implements IChampionsPvPWeapon, Listener {
+public abstract class ChampionsPvPWeapon extends Weapon<Champions, WeaponManager, WeaponData> implements IChampionsPvPWeapon, Listener {
 
     public ChampionsPvPWeapon(final WeaponManager manager, final ItemStack itemStack) {
         super(manager, itemStack);
@@ -22,11 +22,6 @@ public abstract class ChampionsPvPWeapon extends CustomItem<Champions, WeaponMan
     @Override
     public Class<WeaponData> getClassOfData() {
         return WeaponData.class;
-    }
-
-    @Override
-    public String getDisplayName() {
-        return ChatColor.YELLOW + this.getName();
     }
 
     @Override
