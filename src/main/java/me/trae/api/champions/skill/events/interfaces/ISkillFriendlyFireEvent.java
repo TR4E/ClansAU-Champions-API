@@ -1,4 +1,4 @@
-package me.trae.api.champions.skill.interfaces;
+package me.trae.api.champions.skill.events.interfaces;
 
 import me.trae.core.event.types.ITargetEvent;
 import org.bukkit.entity.Player;

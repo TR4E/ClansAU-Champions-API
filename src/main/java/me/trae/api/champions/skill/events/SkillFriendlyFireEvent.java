@@ -1,8 +1,8 @@
-package me.trae.api.champions.skill;
+package me.trae.api.champions.skill.events;
 
-import me.trae.api.champions.skill.abstracts.types.SkillPlayerCancellableEvent;
-import me.trae.api.champions.skill.interfaces.ISkillFriendlyFireEvent;
-import me.trae.champions.skill.Skill;
+import me.trae.api.champions.skill.Skill;
+import me.trae.api.champions.skill.events.abstracts.types.SkillPlayerCancellableEvent;
+import me.trae.api.champions.skill.events.interfaces.ISkillFriendlyFireEvent;
 import me.trae.core.player.events.PlayerDisplayNameEvent;
 import me.trae.core.utility.UtilServer;
 import org.bukkit.entity.Player;

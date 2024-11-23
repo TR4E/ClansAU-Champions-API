@@ -1,4 +1,4 @@
-package me.trae.api.champions.role.interfaces;
+package me.trae.api.champions.role.events.interfaces;
 
 import me.trae.core.event.types.IPlayerEvent;
 

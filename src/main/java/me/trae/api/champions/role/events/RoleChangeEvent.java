@@ -1,7 +1,7 @@
-package me.trae.api.champions.role;
+package me.trae.api.champions.role.events;
 
-import me.trae.api.champions.role.interfaces.IRoleEvent;
-import me.trae.champions.role.Role;
+import me.trae.api.champions.role.Role;
+import me.trae.api.champions.role.events.interfaces.IRoleEvent;
 import me.trae.core.event.CustomEvent;
 import me.trae.core.event.types.IPlayerEvent;
 import org.bukkit.entity.Player;

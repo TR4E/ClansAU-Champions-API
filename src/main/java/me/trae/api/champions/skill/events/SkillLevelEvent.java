@@ -1,8 +1,8 @@
-package me.trae.api.champions.skill;
+package me.trae.api.champions.skill.events;
 
-import me.trae.api.champions.skill.abstracts.types.SkillPlayerEvent;
-import me.trae.api.champions.skill.interfaces.ISkillLevelEvent;
-import me.trae.champions.skill.Skill;
+import me.trae.api.champions.skill.Skill;
+import me.trae.api.champions.skill.events.abstracts.types.SkillPlayerEvent;
+import me.trae.api.champions.skill.events.interfaces.ISkillLevelEvent;
 import org.bukkit.entity.Player;
 
 public class SkillLevelEvent extends SkillPlayerEvent implements ISkillLevelEvent {

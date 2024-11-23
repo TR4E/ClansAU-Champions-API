@@ -1,7 +1,7 @@
-package me.trae.api.champions.role;
+package me.trae.api.champions.role.events;
 
-import me.trae.api.champions.role.interfaces.IKitReceiveEvent;
-import me.trae.champions.role.Role;
+import me.trae.api.champions.role.Role;
+import me.trae.api.champions.role.events.interfaces.IKitReceiveEvent;
 import me.trae.core.event.CustomEvent;
 import org.bukkit.entity.Player;
 
