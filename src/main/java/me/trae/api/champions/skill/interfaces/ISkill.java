@@ -4,6 +4,7 @@ import me.trae.champions.skill.data.SkillData;
 import me.trae.champions.skill.enums.SkillType;
 import org.bukkit.entity.Player;
 
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -27,6 +28,8 @@ public interface ISkill<D extends SkillData> {
 
     boolean isUserByPlayer(final Player player);
 
+    List<Player> getPlayers();
+
     int getLevel(final Player player);
 
     String getDisplayName(final int level);
@@ -36,4 +39,16 @@ public interface ISkill<D extends SkillData> {
     void reset(final Player player);
 
     void onExpire(final Player player, final D data);
+
+    default int getTokenCost() {
+        return 1;
+    }
+
+    default int getDefaultLevel() {
+        return 0;
+    }
+
+    default int getMaxLevel() {
+        return 5;
+    }
 }

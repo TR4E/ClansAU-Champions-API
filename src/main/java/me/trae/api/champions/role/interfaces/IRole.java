@@ -1,6 +1,7 @@
 package me.trae.api.champions.role.interfaces;
 
 import me.trae.api.champions.skill.Skill;
+import me.trae.champions.build.data.RoleBuild;
 import me.trae.champions.skill.enums.SkillType;
 import me.trae.core.utility.objects.SoundCreator;
 import org.bukkit.Material;
@@ -13,7 +14,15 @@ public interface IRole {
 
     <E extends Skill<?, ?>> List<E> getSkillsByClass(final Class<E> clazz);
 
+    <E extends Skill<?, ?>> List<E> getSkillsByType(final Class<E> clazz, final SkillType skillType);
+
     <E extends Skill<?, ?>> E getSkillByType(final Class<E> clazz, final SkillType skillType);
+
+    RoleBuild getDefaultRoleBuildByPlayer(final Player player);
+
+    RoleBuild getActiveRoleBuildByPlayer(final Player player);
+
+    RoleBuild getRoleBuildByPlayer(final Player player);
 
     List<Player> getUsers();
 
@@ -24,8 +33,6 @@ public interface IRole {
     String[] getDescription();
 
     void reset(final Player player);
-
-    List<String> getEquipMessage();
 
     List<Material> getArmour();
 
@@ -42,4 +49,8 @@ public interface IRole {
     }
 
     SoundCreator getDamageSound();
+
+    default int getMaxSkillTokens() {
+        return 12;
+    }
 }

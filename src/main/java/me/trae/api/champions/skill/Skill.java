@@ -1,15 +1,17 @@
 package me.trae.api.champions.skill;
 
-import me.trae.api.champions.skill.events.SkillLevelEvent;
-import me.trae.champions.Champions;
 import me.trae.api.champions.role.Role;
+import me.trae.api.champions.skill.events.SkillLevelEvent;
+import me.trae.api.champions.skill.interfaces.ISkill;
+import me.trae.champions.Champions;
+import me.trae.champions.build.data.RoleBuild;
 import me.trae.champions.skill.data.SkillData;
 import me.trae.champions.skill.enums.SkillType;
-import me.trae.api.champions.skill.interfaces.ISkill;
 import me.trae.core.framework.SpigotSubModule;
 import me.trae.core.utility.UtilServer;
 import org.bukkit.entity.Player;
 
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -66,8 +68,15 @@ public abstract class Skill<R extends Role, D extends SkillData> extends SpigotS
     }
 
     @Override
+    public List<Player> getPlayers() {
+        return UtilServer.getOnlinePlayers(this::isUserByPlayer);
+    }
+
+    @Override
     public int getLevel(final Player player) {
-        final int level = 1;
+        final RoleBuild roleBuild = this.getModule().getRoleBuildByPlayer(player);
+
+        final int level = roleBuild.getRoleSkillByType(this.getType()).getLevel();
 
         final SkillLevelEvent event = new SkillLevelEvent(this, player, level);
         UtilServer.callEvent(event);
