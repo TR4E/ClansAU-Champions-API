@@ -92,7 +92,15 @@ public abstract class Role extends SpigotModule<Champions, RoleManager> implemen
 
     @Override
     public List<Player> getUsers() {
-        return UtilServer.getOnlinePlayers(player -> this.getManager().getPlayerRole(player) == this);
+        return UtilServer.getOnlinePlayers(player -> {
+            final Role playerRole = this.getManager().getPlayerRole(player);
+
+            if (playerRole == null) {
+                return false;
+            }
+
+            return playerRole == this;
+        });
     }
 
     @Override

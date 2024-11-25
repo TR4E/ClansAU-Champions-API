@@ -40,6 +40,10 @@ public interface ISkill<D extends SkillData> {
 
     void onExpire(final Player player, final D data);
 
+    default boolean canActivate(final Player player) {
+        return true;
+    }
+
     default int getTokenCost() {
         return 1;
     }

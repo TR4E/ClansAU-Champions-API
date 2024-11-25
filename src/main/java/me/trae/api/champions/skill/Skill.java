@@ -5,8 +5,11 @@ import me.trae.api.champions.skill.events.SkillLevelEvent;
 import me.trae.api.champions.skill.interfaces.ISkill;
 import me.trae.champions.Champions;
 import me.trae.champions.build.data.RoleBuild;
+import me.trae.champions.build.data.RoleSkill;
 import me.trae.champions.skill.data.SkillData;
 import me.trae.champions.skill.enums.SkillType;
+import me.trae.champions.skill.types.GlobalSkill;
+import me.trae.champions.skill.types.PassiveSkill;
 import me.trae.core.framework.SpigotSubModule;
 import me.trae.core.utility.UtilServer;
 import org.bukkit.entity.Player;
@@ -69,14 +72,32 @@ public abstract class Skill<R extends Role, D extends SkillData> extends SpigotS
 
     @Override
     public List<Player> getPlayers() {
-        return UtilServer.getOnlinePlayers(this::isUserByPlayer);
+        return UtilServer.getOnlinePlayers(player -> {
+            if (!(this.getModule().isUserByPlayer(player))) {
+                return false;
+            }
+
+            if (this instanceof PassiveSkill<?, ?> || this instanceof GlobalSkill<?, ?>) {
+                return true;
+            }
+
+            return this.isUserByPlayer(player);
+        });
     }
 
     @Override
     public int getLevel(final Player player) {
         final RoleBuild roleBuild = this.getModule().getRoleBuildByPlayer(player);
+        if (roleBuild == null) {
+            return 0;
+        }
 
-        final int level = roleBuild.getRoleSkillByType(this.getType()).getLevel();
+        final RoleSkill roleSkill = roleBuild.getRoleSkillByType(this.getType());
+        if (roleSkill == null) {
+            return 0;
+        }
+
+        final int level = roleSkill.getLevel();
 
         final SkillLevelEvent event = new SkillLevelEvent(this, player, level);
         UtilServer.callEvent(event);

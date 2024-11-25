@@ -1,7 +1,7 @@
 package me.trae.api.champions.skill.events.abstracts;
 
-import me.trae.api.champions.skill.events.abstracts.interfaces.ISkillEvent;
 import me.trae.api.champions.skill.Skill;
+import me.trae.api.champions.skill.events.abstracts.interfaces.ISkillEvent;
 import me.trae.core.event.CustomEvent;
 
 public class SkillEvent extends CustomEvent implements ISkillEvent {
