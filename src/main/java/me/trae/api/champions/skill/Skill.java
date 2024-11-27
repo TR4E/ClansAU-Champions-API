@@ -77,7 +77,7 @@ public abstract class Skill<R extends Role, D extends SkillData> extends SpigotS
                 return false;
             }
 
-            if (this instanceof PassiveSkill<?, ?> || this instanceof GlobalSkill<?, ?>) {
+            if (this instanceof PassiveSkill<?, ?> || this instanceof GlobalSkill) {
                 return true;
             }
 

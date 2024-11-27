@@ -8,6 +8,7 @@ import me.trae.champions.build.data.RoleBuild;
 import me.trae.champions.build.data.types.DefaultRoleBuild;
 import me.trae.champions.role.RoleManager;
 import me.trae.champions.skill.enums.SkillType;
+import me.trae.champions.skill.skills.global.Swim;
 import me.trae.core.framework.SpigotModule;
 import me.trae.core.utility.UtilServer;
 import org.bukkit.entity.Player;
@@ -19,6 +20,12 @@ public abstract class Role extends SpigotModule<Champions, RoleManager> implemen
 
     public Role(final RoleManager manager) {
         super(manager);
+    }
+
+    @Override
+    public void registerSubModules() {
+        // Global Skills
+        addSubModule(new Swim(this));
     }
 
     @Override
