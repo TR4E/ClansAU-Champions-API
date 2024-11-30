@@ -2,7 +2,7 @@ package me.trae.api.champions.role.events.interfaces;
 
 import me.trae.api.champions.role.Role;
 
-public interface IRoleEvent {
+public interface ISetRoleEvent {
 
-    Role getRole();
+    void setRole(final Role role);
 }
