@@ -8,6 +8,7 @@ import me.trae.champions.build.data.RoleBuild;
 import me.trae.champions.build.data.RoleSkill;
 import me.trae.champions.skill.data.SkillData;
 import me.trae.champions.skill.enums.SkillType;
+import me.trae.champions.skill.types.DropSkill;
 import me.trae.champions.skill.types.GlobalSkill;
 import me.trae.champions.skill.types.PassiveSkill;
 import me.trae.core.framework.SpigotSubModule;
@@ -73,15 +74,17 @@ public abstract class Skill<R extends Role, D extends SkillData> extends SpigotS
     @Override
     public List<Player> getPlayers() {
         return UtilServer.getOnlinePlayers(player -> {
-            if (!(this.getModule().isUserByPlayer(player))) {
-                return false;
+            if (this.getModule().isUserByPlayer(player)) {
+                if (this.isUserByPlayer(player)) {
+                    return true;
+                }
+
+                if (!(this instanceof DropSkill<?, ?>) && (this instanceof PassiveSkill<?, ?> || this instanceof GlobalSkill)) {
+                    return true;
+                }
             }
 
-            if (this instanceof PassiveSkill<?, ?> || this instanceof GlobalSkill) {
-                return true;
-            }
-
-            return this.isUserByPlayer(player);
+            return false;
         });
     }
 
