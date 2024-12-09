@@ -95,7 +95,7 @@ public abstract class Skill<R extends Role, D extends SkillData> extends SpigotS
             return 0;
         }
 
-        final RoleSkill roleSkill = roleBuild.getRoleSkillByType(this.getType());
+        final RoleSkill roleSkill = roleBuild.getRoleSkillByName(this.getName());
         if (roleSkill == null) {
             return 0;
         }
