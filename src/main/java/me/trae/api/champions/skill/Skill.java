@@ -90,6 +90,10 @@ public abstract class Skill<R extends Role, D extends SkillData> extends SpigotS
 
     @Override
     public int getLevel(final Player player) {
+        if (!(this.getModule().isUserByPlayer(player))) {
+            return 0;
+        }
+
         final RoleBuild roleBuild = this.getModule().getRoleBuildByPlayer(player);
         if (roleBuild == null) {
             return 0;
