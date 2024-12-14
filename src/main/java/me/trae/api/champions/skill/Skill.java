@@ -11,6 +11,7 @@ import me.trae.champions.skill.enums.SkillType;
 import me.trae.champions.skill.types.DropSkill;
 import me.trae.champions.skill.types.GlobalSkill;
 import me.trae.champions.skill.types.PassiveSkill;
+import me.trae.champions.skill.types.models.ToggleSkill;
 import me.trae.core.framework.SpigotSubModule;
 import me.trae.core.utility.UtilServer;
 import org.bukkit.entity.Player;
