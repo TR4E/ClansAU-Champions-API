@@ -11,9 +11,9 @@ import me.trae.champions.skill.enums.SkillType;
 import me.trae.champions.skill.types.DropSkill;
 import me.trae.champions.skill.types.GlobalSkill;
 import me.trae.champions.skill.types.PassiveSkill;
-import me.trae.champions.skill.types.models.ToggleSkill;
 import me.trae.core.framework.SpigotSubModule;
 import me.trae.core.utility.UtilServer;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -124,5 +124,17 @@ public abstract class Skill<R extends Role, D extends SkillData> extends SpigotS
 
     @Override
     public void onExpire(final Player player, final D data) {
+    }
+
+    @Override
+    public void onShutdown() {
+        for (final UUID uuid : this.getUsers().keySet()) {
+            final Player player = Bukkit.getPlayer(uuid);
+            if (player == null) {
+                continue;
+            }
+
+            this.reset(player);
+        }
     }
 }

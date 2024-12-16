@@ -11,10 +11,10 @@ import me.trae.champions.skill.enums.SkillType;
 import me.trae.champions.skill.skills.global.Swim;
 import me.trae.core.framework.SpigotModule;
 import me.trae.core.utility.UtilServer;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public abstract class Role extends SpigotModule<Champions, RoleManager> implements IRole {
 
@@ -99,6 +99,10 @@ public abstract class Role extends SpigotModule<Champions, RoleManager> implemen
 
     @Override
     public List<Player> getUsers() {
+        if (!(this.isEnabled())) {
+            return Collections.emptyList();
+        }
+
         return UtilServer.getOnlinePlayers(player -> {
             final Role playerRole = this.getManager().getPlayerRole(player);
 
@@ -128,6 +132,22 @@ public abstract class Role extends SpigotModule<Champions, RoleManager> implemen
             if (skill.isUserByPlayer(player)) {
                 skill.removeUser(player);
             }
+        }
+    }
+
+    @Override
+    public void onShutdown() {
+        for (final Map.Entry<UUID, Role> entry : this.getManager().getPlayerRoles().entrySet()) {
+            if (entry.getValue() != this) {
+                continue;
+            }
+
+            final Player player = Bukkit.getPlayer(entry.getKey());
+            if (player == null) {
+                continue;
+            }
+
+            this.reset(player);
         }
     }
 }
