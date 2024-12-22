@@ -63,7 +63,7 @@ public abstract class Role extends SpigotModule<Champions, RoleManager> implemen
 
     @Override
     public RoleBuild getDefaultRoleBuildByPlayer(final Player player) {
-        final BuildManager buildManager = this.getInstance().getManagerByClass(BuildManager.class);
+        final BuildManager buildManager = this.getInstanceByClass().getManagerByClass(BuildManager.class);
 
         RoleBuild roleBuild = buildManager.getBuildByID(player, this, 0);
         if (roleBuild == null) {
@@ -76,7 +76,7 @@ public abstract class Role extends SpigotModule<Champions, RoleManager> implemen
 
     @Override
     public RoleBuild getActiveRoleBuildByPlayer(final Player player) {
-        for (final RoleBuild roleBuild : this.getInstance().getManagerByClass(BuildManager.class).getBuildsByRole(player, this).values()) {
+        for (final RoleBuild roleBuild : this.getInstanceByClass().getManagerByClass(BuildManager.class).getBuildsByRole(player, this).values()) {
             if (!(roleBuild.isActive())) {
                 continue;
             }
