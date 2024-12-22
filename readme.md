@@ -8,7 +8,7 @@ The Champions-API is a robust integration layer designed to connect the Champion
 
 ### Features
 - **Integration Capabilities**: Provides seamless integration between the Champions plugin and other child plugins.
-- **Example Integration**: Works with ClansAU-Clans to synchronize player data, enabling features like role-specific clan bonuses and cross-plugin functionality.
+- **Example Integration**: Works with Clans to synchronize player data, enabling features like role-specific clan bonuses and cross-plugin functionality.
 - **Custom Hooks**: Developers can utilize the API to create custom interactions or extend plugin functionality with minimal effort.
 - **Documentation**: Comprehensive API documentation is available to guide developers through implementation and usage.
 - **Scalability**: Designed to support future expansions and additional child plugins within the ClansAU ecosystem.
