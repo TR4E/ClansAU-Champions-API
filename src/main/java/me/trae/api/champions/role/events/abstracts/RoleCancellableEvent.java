@@ -1,20 +1,19 @@
-package me.trae.api.champions.role.events;
+package me.trae.api.champions.role.events.abstracts;
 
 import me.trae.api.champions.role.Role;
 import me.trae.api.champions.role.events.abstracts.interfaces.IGetRoleEvent;
-import me.trae.api.champions.role.events.abstracts.interfaces.ISetRoleEvent;
 import me.trae.core.event.CustomCancellableEvent;
 import me.trae.core.event.types.IPlayerEvent;
 import org.bukkit.entity.Player;
 
-public class RoleCheckEvent extends CustomCancellableEvent implements IPlayerEvent, IGetRoleEvent, ISetRoleEvent {
+public class RoleCancellableEvent extends CustomCancellableEvent implements IPlayerEvent, IGetRoleEvent {
 
     private final Player player;
+    private final Role role;
 
-    private Role role;
-
-    public RoleCheckEvent(final Player player) {
+    public RoleCancellableEvent(final Player player, final Role role) {
         this.player = player;
+        this.role = role;
     }
 
     @Override
@@ -25,10 +24,5 @@ public class RoleCheckEvent extends CustomCancellableEvent implements IPlayerEve
     @Override
     public Role getRole() {
         return this.role;
-    }
-
-    @Override
-    public void setRole(final Role role) {
-        this.role = role;
     }
 }
