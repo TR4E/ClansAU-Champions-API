@@ -24,7 +24,7 @@ public interface IRole {
 
     RoleBuild getRoleBuildByPlayer(final Player player);
 
-    List<Player> getUsers();
+    List<Player> getPlayers();
 
     boolean isUserByPlayer(final Player player);
 

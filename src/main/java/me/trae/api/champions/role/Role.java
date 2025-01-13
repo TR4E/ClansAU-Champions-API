@@ -98,7 +98,7 @@ public abstract class Role extends SpigotModule<Champions, RoleManager> implemen
     }
 
     @Override
-    public List<Player> getUsers() {
+    public List<Player> getPlayers() {
         if (!(this.isEnabled())) {
             return Collections.emptyList();
         }

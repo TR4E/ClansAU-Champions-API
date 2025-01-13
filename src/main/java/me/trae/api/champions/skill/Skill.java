@@ -13,7 +13,6 @@ import me.trae.champions.skill.types.GlobalSkill;
 import me.trae.champions.skill.types.PassiveSkill;
 import me.trae.core.framework.SpigotSubModule;
 import me.trae.core.utility.UtilServer;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -75,7 +74,7 @@ public abstract class Skill<R extends Role, D extends SkillData> extends SpigotS
     @Override
     public List<Player> getPlayers() {
         return UtilServer.getOnlinePlayers(player -> {
-            if (this.getModule().isUserByPlayer(player)) {
+            if (this.getModule().isUserByPlayer(player) && this.getLevel(player) != 0) {
                 if (this.isUserByPlayer(player)) {
                     return true;
                 }
@@ -128,13 +127,9 @@ public abstract class Skill<R extends Role, D extends SkillData> extends SpigotS
 
     @Override
     public void onShutdown() {
-        for (final UUID uuid : this.getUsers().keySet()) {
-            final Player player = Bukkit.getPlayer(uuid);
-            if (player == null) {
-                continue;
-            }
-
+        for (final Player player : this.getPlayers()) {
             this.reset(player);
+            this.removeUser(player);
         }
     }
 }
