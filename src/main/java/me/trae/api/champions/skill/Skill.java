@@ -13,6 +13,7 @@ import me.trae.champions.skill.types.GlobalSkill;
 import me.trae.champions.skill.types.PassiveSkill;
 import me.trae.core.framework.SpigotSubModule;
 import me.trae.core.utility.UtilServer;
+import me.trae.core.utility.UtilString;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -114,7 +115,7 @@ public abstract class Skill<R extends Role, D extends SkillData> extends SpigotS
 
     @Override
     public String getDisplayName(final int level) {
-        return String.format("%s %s", this.getName(), level);
+        return UtilString.format("%s %s", this.getName(), level);
     }
 
     @Override
