@@ -8,8 +8,8 @@ import org.bukkit.entity.Player;
 
 public class UtilRole {
 
-    public static void playEffect(final Player player, final String name, final boolean equip) {
-        if (equip) {
+    public static void playEffect(final Player player, final String name) {
+        if (!(name.equals("None"))) {
             new SoundCreator(Sound.HORSE_ARMOR, 5.0F, 5.09F).play(player.getLocation());
 
             UtilMessage.simpleMessage(player, "Class", UtilString.pair("Armor Class", UtilString.format("<green>%s", name)));
