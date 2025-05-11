@@ -63,12 +63,13 @@ public interface ISkill<D extends SkillData> {
     default <T> String getValueString(final Class<T> clazz, final Function<Integer, T> function, final int level) {
         final T currentValue = function.apply(level);
         final T nextValue = function.apply(level + 1);
+        final T nextNextValue = function.apply(level + 2);
 
         final String currentValueString = clazz.equals(Long.class) ? UtilTime.getTime(UtilJava.cast(Long.class, currentValue)) : String.valueOf(currentValue);
 
         ChatColor chatColor = ChatColor.GREEN;
 
-        if (currentValue.equals(nextValue)) {
+        if (currentValue.equals(nextValue) && currentValue.equals(nextNextValue)) {
             chatColor = ChatColor.YELLOW;
         }
 
